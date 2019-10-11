@@ -1,6 +1,6 @@
-package com.om.mappers;
+package com.om.springboot.mappers;
 
-import com.om.domain.Test;
+import com.om.springboot.dto.Test;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

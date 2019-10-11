@@ -1,4 +1,4 @@
-package com.om.services;
+package com.om.springboot.services;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

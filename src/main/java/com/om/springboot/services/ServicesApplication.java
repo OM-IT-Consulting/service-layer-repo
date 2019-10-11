@@ -1,8 +1,8 @@
-package com.om.services;
+package com.om.springboot.services;
 
-import com.om.controller.TestController;
-import com.om.mappers.TestMapper;
-import org.apache.ibatis.type.MappedTypes;
+import com.om.springboot.controller.TestController;
+import com.om.springboot.mappers.TestMapper;
+import com.om.springboot.service.TestUserService;
 import org.mybatis.spring.annotation.MapperScan;
 import java.util.Arrays;
 
@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = {TestController.class})
-@MapperScan("com.om.mappers")
+@ComponentScan(basePackageClasses = {TestController.class, TestUserService.class})
+@MapperScan("com.om.springboot.mappers")
 public class ServicesApplication {
 
 	public static void main(String[] args) {

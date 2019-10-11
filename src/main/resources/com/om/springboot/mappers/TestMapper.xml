@@ -2,9 +2,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.om.mappers.TestMapper">
+<mapper namespace="com.om.springboot.mappers.TestMapper">
 
-    <resultMap id="TestResultMap" type="com.om.domain.Test">
+    <resultMap id="TestResultMap" type="com.om.springboot.dto.Test">
         <id column="id" property="id" />
         <result column="testid" property="testid" />
         <result column="testname" property="testname" />
@@ -18,7 +18,7 @@
         SELECT ID, TESTID, TESTNAME FROM TEST WHERE ID=#{id}
     </select>
 
-    <insert id="insertTest" parameterType="com.om.domain.Test" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertTest" parameterType="com.om.springboot.dto.Test" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO TEST(TESTID,TESTNAME) VALUES(#{TESTID},#{TESTNAME})
     </insert>
 </mapper>

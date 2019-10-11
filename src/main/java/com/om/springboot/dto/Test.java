@@ -1,4 +1,4 @@
-package com.om.domain;
+package com.om.springboot.dto;
 
 public class Test {
 
