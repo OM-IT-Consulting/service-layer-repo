@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public class ApplicationException {
 
+    @Autowired
     private static PropertiesConfig propertiesConfig;
 
     @Autowired
@@ -99,6 +100,8 @@ public class ApplicationException {
     }
 
     private static String format(String template, String... args) {
+        System.out.println("template "+template);
+        System.out.println("template ===> "+new PropertiesConfig().getConfigValue(template));
         Optional<String> templateContent = Optional.ofNullable(propertiesConfig.getConfigValue(template));
         if (templateContent.isPresent()) {
             return MessageFormat.format(templateContent.get(), args);

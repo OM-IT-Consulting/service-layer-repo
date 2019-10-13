@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface TestUserMapper {
 
-    TestUser insertTestUser(TestUser testUser);
+    void insertTestUser(TestUser testUser);
     TestUser findUserById(String emailId);
 }

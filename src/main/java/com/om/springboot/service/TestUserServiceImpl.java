@@ -26,7 +26,6 @@ public class TestUserServiceImpl implements TestUserService {
     @Override
     public TestUserDto signup(TestUserDto testUserDto){
         TestUser testUser = testUserMapper.findUserById(testUserDto.getEmailId());
-        System.out.println("Enetered signup Super");
         if (testUser == null) {
             testUser = new TestUser()
                     .setEmailId(testUserDto.getEmailId())
@@ -34,7 +33,8 @@ public class TestUserServiceImpl implements TestUserService {
                     .setFirstName(testUserDto.getFirstName())
                     .setLastName(testUserDto.getLastName())
                     .setMobileNumber(testUserDto.getMobileNumber());
-            return com.om.springboot.dto.mapper.TestUserMapper.toUserDto(testUserMapper.insertTestUser(testUser));
+            testUserMapper.insertTestUser(testUser);
+            return com.om.springboot.dto.mapper.TestUserMapper.toUserDto(testUser);
         }
         throw exception(TESTUSER, DUPLICATE_ENTITY, testUserDto.getEmailId());
     }

@@ -19,7 +19,7 @@
         SELECT EMAILID,PASSWORD,FIRSTNAME,LASTNAME FROM TESTUSER WHERE EMAILID=#{emailId}
     </select>
 
-    <insert id="insertTestUser" parameterType="com.om.springboot.model.TestUser" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertTestUser" parameterType="com.om.springboot.model.TestUser" useGeneratedKeys="true" keyProperty="emailId">
         INSERT INTO TESTUSER(EMAILID,PASSWORD,FIRSTNAME,LASTNAME) VALUES(#{emailId},#{password},#{firstName},#{lastName})
     </insert>
 </mapper>
