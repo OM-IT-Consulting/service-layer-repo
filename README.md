@@ -3,7 +3,7 @@ All application business logics are applied in this layer. Built using SpringBoo
 
 ## Build 
 
-mvn clean install 
+mvn clean install -Dmaven.test.skip=true
 
 In the workspace run the below command
 

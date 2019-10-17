@@ -35,6 +35,8 @@ public class TestUserServiceImpl implements TestUserService {
                     .setMobileNumber(testUserDto.getMobileNumber());
             testUserMapper.insertTestUser(testUser);
             return com.om.springboot.dto.mapper.TestUserMapper.toUserDto(testUser);
+        }else if (testUser != null) {
+            return com.om.springboot.dto.mapper.TestUserMapper.toUserDto(testUser);
         }
         throw exception(TESTUSER, DUPLICATE_ENTITY, testUserDto.getEmailId());
     }
