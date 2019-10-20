@@ -1,7 +1,9 @@
 package com.om.springboot.services;
 
+import com.om.springboot.config.SecurityConfig;
 import com.om.springboot.controller.TestController;
 import com.om.springboot.mappers.TestMapper;
+import com.om.springboot.security.CustomUserDetailsService;
 import com.om.springboot.service.TestUserService;
 import org.mybatis.spring.annotation.MapperScan;
 import java.util.Arrays;
@@ -14,7 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = {TestController.class, TestUserService.class})
+@ComponentScan(basePackageClasses = {TestController.class, TestUserService.class, SecurityConfig.class, CustomUserDetailsService.class})
 @MapperScan("com.om.springboot.mappers")
 public class ServicesApplication {
 
