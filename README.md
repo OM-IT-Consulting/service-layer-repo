@@ -12,3 +12,11 @@ java -jar target/services-0.0.1-SNAPSHOT.jar
 Now test the application using the below command
 
 curl localhost:8080/test/testapi
+
+
+Document the below :-
+TestRequest - Annotation Validation
+Folder Structure
+Database Connection
+Error Handling
+Translation for Error Handling
