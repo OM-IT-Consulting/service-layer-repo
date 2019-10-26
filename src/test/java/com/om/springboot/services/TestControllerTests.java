@@ -26,6 +26,7 @@ public class TestControllerTests {
     private MockMvc mvc;
 
 
+    @Test
     public void testRestAPI() throws Exception {
 
             mvc.perform(MockMvcRequestBuilders.get("/test/testapi").accept(MediaType.APPLICATION_JSON))
