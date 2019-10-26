@@ -1,7 +1,6 @@
 package com.om.springboot.service;
 
 import com.om.springboot.dto.model.test.TestUserDto;
-import org.springframework.stereotype.Component;
 
 public interface TestUserService {
 
