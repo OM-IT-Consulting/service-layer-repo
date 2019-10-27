@@ -1,5 +1,5 @@
 package com.om.springboot.exception;
 
 public enum EntityType {
-    TESTUSER
+    TESTUSER,USER
 }

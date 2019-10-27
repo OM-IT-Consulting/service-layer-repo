@@ -13,7 +13,11 @@
     </resultMap>
 
 
-    <select id="findByUsernameOrEmail" resultMap="UserResultMap">
+    <select id="findByUsername" resultMap="UserResultMap">
+        SELECT ID,NAME,USERNAME,EMAIL,PASSWORD FROM USER WHERE USERNAME=#{username}
+    </select>
+
+    <select id="findByEmail" resultMap="UserResultMap">
         SELECT ID,NAME,USERNAME,EMAIL,PASSWORD FROM USER WHERE EMAIL=#{email}
     </select>
 

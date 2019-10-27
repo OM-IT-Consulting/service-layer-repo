@@ -9,5 +9,6 @@ public interface UserMapper {
 
     void insertUser(User user);
     User findUserById(Long id);
-    User findByUsernameOrEmail(String userNameOrEmail);
+    User findByUsername(String userName);
+    User findByEmail(String Email);
 }

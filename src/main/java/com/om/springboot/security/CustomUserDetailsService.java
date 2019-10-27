@@ -21,7 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String usernameOrEmail)
             throws UsernameNotFoundException {
         // Let people login with either username or email
-        User user = userMapper.findByUsernameOrEmail(usernameOrEmail);
+        User user = userMapper.findByUsername(usernameOrEmail);
         if(user ==null){
             throw new UsernameNotFoundException("User not found with username or email : " + usernameOrEmail);
         }
