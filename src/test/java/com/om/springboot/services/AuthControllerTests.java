@@ -3,6 +3,7 @@ package com.om.springboot.services;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.om.springboot.controller.request.TestRequest;
 import com.om.springboot.controller.request.auth.LoginRequest;
+import com.om.springboot.controller.request.auth.SignUpRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,20 @@ public class AuthControllerTests {
     private PasswordEncoder passwordEncoder;
 
     @Test
-    public void testAuthRestAPI() throws Exception
+    public void testAuthSignInAPI() throws Exception
     {
         mvc.perform( MockMvcRequestBuilders.post("/api/auth/signin")
                 .content(asJsonString(new LoginRequest().setUsernameOrEmail("siva@sc.com").setPassword("test")))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testAuthSignUpAPI() throws Exception
+    {
+        mvc.perform( MockMvcRequestBuilders.post("/api/auth/signup")
+                .content(asJsonString(new SignUpRequest().setName("testname").setUsername("Testusername").setEmail("testemail@test.com").setPassword("testpassword")))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());

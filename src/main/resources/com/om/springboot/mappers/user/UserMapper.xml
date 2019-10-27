@@ -25,8 +25,8 @@
         SELECT ID,NAME,USERNAME,EMAIL,PASSWORD FROM USER WHERE EMAIL=#{email}
     </select>
 
-    <insert id="insertUser" useGeneratedKeys="true"
-            keyProperty="id">
+    <insert id="insertUser" parameterType="com.om.springboot.model.user.User" useGeneratedKeys="true"
+            keyProperty="ID" keyColumn="id">
         INSERT INTO USER VALUES (#{name},#{username},#{email},#{password});
     </insert>
 

@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
         if(isUserExists != null && isUserExists){
             return isUserExists;
         }else{
-            throw exception(USER, ENTITY_NOT_FOUND, userName);
+            return false;
         }
     }
 
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
         if(isUserExists != null && isUserExists){
             return isUserExists;
         }else{
-            throw exception(USER, ENTITY_NOT_FOUND, emailId);
+            return false;
         }
     }
 
