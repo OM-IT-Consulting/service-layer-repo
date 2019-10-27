@@ -21,11 +21,21 @@ public class UserController {
 
     @GetMapping("/user/checkUsernameAvailability")
     public Response checkUsernameAvailability(@RequestBody @Valid @RequestParam(value = "username") String username) {
-        return Response.ok().setPayload(userService.existsByUsername(username));
+        Boolean isUserExists = userService.existsByUsername(username);
+        if(isUserExists) {
+            return Response.ok();
+        }else{
+            return Response.notFound();
+        }
     }
 
     @GetMapping("/user/checkEmailAvailability")
     public Response checkEmailAvailability(@RequestBody @Valid @RequestParam(value = "email") String email) {
-        return Response.ok().setPayload(userService.existsByEmail(email));
+        Boolean isUserExists = userService.existsByEmail(email);
+        if(isUserExists) {
+            return Response.ok();
+        }else{
+            return Response.notFound();
+        }
     }
 }

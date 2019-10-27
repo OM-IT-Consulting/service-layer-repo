@@ -29,8 +29,7 @@ public class UserControllerTests {
 
         mvc.perform( MockMvcRequestBuilders.get("/api/user/checkUsernameAvailability?username=Sivaram")
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.payload.emailId").exists());
+                .andExpect(status().isOk());
     }
 
     public static String asJsonString(final Object obj) {

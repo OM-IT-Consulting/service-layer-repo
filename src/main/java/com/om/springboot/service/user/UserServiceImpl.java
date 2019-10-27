@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import static com.om.springboot.exception.EntityType.TESTUSER;
 import static com.om.springboot.exception.EntityType.USER;
+import static com.om.springboot.exception.ExceptionType.DUPLICATE_ENTITY;
 import static com.om.springboot.exception.ExceptionType.ENTITY_NOT_FOUND;
 
 @Component
@@ -21,16 +23,37 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public UserDto existsByUsername(String userName){
-        User user = userMapper.findByUsername(userName);
-        if(user != null) {
-            return com.om.springboot.dto.mapper.user.UserMapper.toUserDto(user);
+    public Boolean existsByUsername(String userName){
+        Boolean isUserExists = userMapper.findByUsername(userName);
+        if(isUserExists != null && isUserExists){
+            return isUserExists;
+        }else{
+            throw exception(USER, ENTITY_NOT_FOUND, userName);
         }
-        throw exception(USER, ENTITY_NOT_FOUND,userName);
     }
 
-    public UserDto existsByEmail(String emailId){
-        User user = userMapper.findByEmail(emailId);
+    public Boolean existsByEmail(String emailId){
+        Boolean isUserExists = userMapper.findByEmail(emailId);
+        if(isUserExists != null && isUserExists){
+            return isUserExists;
+        }else{
+            throw exception(USER, ENTITY_NOT_FOUND, emailId);
+        }
+    }
+
+    public Boolean signup(UserDto userDto){
+        User user = new User();
+        user.setUsername(userDto.getUsername());
+        user.setPassword(userDto.getPassword());
+        user.setName(userDto.getName());
+        user.setEmail(userDto.getEmail());
+
+        Boolean isUserRegistered = userMapper.insertUser(user);
+        return isUserRegistered;
+    }
+
+    public UserDto getUserByEmail(String emailId){
+        User user = userMapper.getUserByEmail(emailId);
         if(user != null) {
             return com.om.springboot.dto.mapper.user.UserMapper.toUserDto(user);
         }

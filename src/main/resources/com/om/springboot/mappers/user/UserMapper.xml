@@ -13,12 +13,21 @@
     </resultMap>
 
 
-    <select id="findByUsername" resultMap="UserResultMap">
+    <select id="findByUsername" resultType="boolean">
         SELECT ID,NAME,USERNAME,EMAIL,PASSWORD FROM USER WHERE USERNAME=#{username}
     </select>
 
-    <select id="findByEmail" resultMap="UserResultMap">
+    <select id="findByEmail" resultType="boolean">
         SELECT ID,NAME,USERNAME,EMAIL,PASSWORD FROM USER WHERE EMAIL=#{email}
     </select>
+
+    <select id="getUserByEmail" resultMap="UserResultMap">
+        SELECT ID,NAME,USERNAME,EMAIL,PASSWORD FROM USER WHERE EMAIL=#{email}
+    </select>
+
+    <insert id="insertUser" useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO USER VALUES (#{name},#{username},#{email},#{password});
+    </insert>
 
 </mapper>

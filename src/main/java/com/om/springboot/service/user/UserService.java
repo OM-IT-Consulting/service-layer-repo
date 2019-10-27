@@ -10,7 +10,7 @@ public interface UserService {
      * @param userName
      * @return
      */
-    UserDto existsByUsername(String userName);
+    Boolean existsByUsername(String userName);
 
     /**
      * Check any user exists with the same emailId
@@ -18,6 +18,21 @@ public interface UserService {
      * @param emailId
      * @return
      */
-    UserDto existsByEmail(String emailId);
+    Boolean existsByEmail(String emailId);
 
+    /**
+     * Check any user exists with the same emailId
+     *
+     * @param emailId
+     * @return
+     */
+    UserDto getUserByEmail(String emailId);
+
+    /**
+     * User registration
+     *
+     * @param userDto
+     * @return
+     */
+    Boolean signup(UserDto userDto);
 }

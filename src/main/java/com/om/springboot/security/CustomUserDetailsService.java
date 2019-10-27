@@ -21,7 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String usernameOrEmail)
             throws UsernameNotFoundException {
         // Let people login with either username or email
-        User user = userMapper.findByUsername(usernameOrEmail);
+        User user = userMapper.getUserByEmail(usernameOrEmail);
         if(user ==null){
             throw new UsernameNotFoundException("User not found with username or email : " + usernameOrEmail);
         }
@@ -30,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Transactional
     public UserDetails loadUserById(Long id) {
-        User user = userMapper.findUserById(id);
+        User user = userMapper.getUserById(id);
         if(user ==null){
             throw new ResourceNotFoundException("User", "id", id);
         }
