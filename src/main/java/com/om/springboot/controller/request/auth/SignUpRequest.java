@@ -29,6 +29,6 @@ public class SignUpRequest {
     private String email;
 
     @NotEmpty(message = "{constraints.NotEmpty.message}")
-    @Size(min = 6, max = 20)
+    @Size(min = 6, max = 80)
     private String password;
 }
