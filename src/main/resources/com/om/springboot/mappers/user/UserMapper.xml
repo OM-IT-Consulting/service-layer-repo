@@ -25,9 +25,11 @@
         SELECT ID,NAME,USERNAME,EMAIL,PASSWORD FROM USER WHERE EMAIL=#{email}
     </select>
 
-    <insert id="insertUser" parameterType="com.om.springboot.model.user.User" useGeneratedKeys="true"
-            keyProperty="ID" keyColumn="id">
-        INSERT INTO USER VALUES (#{name},#{username},#{email},#{password});
+    <insert id="insertUser" parameterType="com.om.springboot.model.user.User">
+        <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID() AS value
+        </selectKey>
+        INSERT INTO USER VALUES (#{id},#{name},#{username},#{email},#{password});
     </insert>
 
 </mapper>
